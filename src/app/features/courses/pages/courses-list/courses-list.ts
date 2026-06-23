@@ -4,6 +4,7 @@ import { toast } from 'ngx-sonner';
 import { SharedModule } from '../../../../shared/shared-module';
 
 import { StatusBadge } from '../../components/status-badge/status-badge';
+import { Pagination } from '../../components/pagination/pagination';
 
 import { Courses } from '../../services/courses';
 
@@ -25,7 +26,7 @@ type SortDirection = 'asc' | 'desc';
 
 @Component({
   selector: 'app-courses-list',
-  imports: [SharedModule, StatusBadge],
+  imports: [SharedModule, StatusBadge, Pagination],
   templateUrl: './courses-list.html',
   styleUrl: './courses-list.scss',
 })

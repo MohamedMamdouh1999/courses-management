@@ -198,39 +198,7 @@
         </table>
       </div>
 
-      <div class="pagination">
-        <span>
-          Showing page {{ currentPage() }} of {{ totalPages() }}
-        </span>
-
-        <div>
-          <button
-            type="button"
-            [disabled]="currentPage() === 1"
-            (click)="goToPage(currentPage() - 1)"
-          >
-            Previous
-          </button>
-
-          @for (page of [].constructor(totalPages()); track $index) {
-            <button
-              type="button"
-              [class.active]="currentPage() === $index + 1"
-              (click)="goToPage($index + 1)"
-            >
-              {{ $index + 1 }}
-            </button>
-          }
-
-          <button
-            type="button"
-            [disabled]="currentPage() === totalPages()"
-            (click)="goToPage(currentPage() + 1)"
-          >
-            Next
-          </button>
-        </div>
-      </div>
+      <app-pagination [currentPage]="currentPage()" [totalPages]="totalPages()" (pageChange)="goToPage($event)"/>
     } @else {
       <div class="empty-state">
         <h3>No courses found</h3>
