@@ -25,6 +25,9 @@ A responsive Angular application for managing courses in an educational platform
 * Toast notifications
 * Responsive layout
 * Lazy-loaded courses module
+* Sort courses by table columns
+* Delete confirmation modal
+* Loading skeleton
 
 ## Data Source
 
@@ -92,3 +95,4 @@ src/app/
 * Full CRUD behavior is implemented on the client side.
 * Course data persists in the browser until LocalStorage is cleared.
 * The Courses feature is lazy-loaded.
+* The courses list includes sorting, pagination, empty state, and loading skeleton.
