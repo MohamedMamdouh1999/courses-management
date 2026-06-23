@@ -64,11 +64,12 @@
       </button>
     </div>
 
-    @if (paginatedCourses().length) {
+    @if (isLoading()) {
       <div class="table-wrapper">
         <table>
           <thead>
             <tr>
+              <th>ID</th>
               <th>Course Name</th>
               <th>Instructor</th>
               <th>Category</th>
@@ -81,12 +82,85 @@
           </thead>
 
           <tbody>
+            @for (row of skeletonRows; track $index) {
+              <tr>
+                @for (cell of [1, 2, 3, 4, 5, 6, 7, 8, 9]; track $index) {
+                  <td>
+                    <div class="skeleton-line"></div>
+                  </td>
+                }
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    } @else if (paginatedCourses().length) {
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>
+                <button class="sort-header" type="button" (click)="sortBy('id')">
+                  ID <span>{{ getSortIcon('id') }}</span>
+                </button>
+              </th>
+
+              <th>
+                <button class="sort-header" type="button" (click)="sortBy('courseName')">
+                  Course Name <span>{{ getSortIcon('courseName') }}</span>
+                </button>
+              </th>
+
+              <th>
+                <button class="sort-header" type="button" (click)="sortBy('instructorName')">
+                  Instructor <span>{{ getSortIcon('instructorName') }}</span>
+                </button>
+              </th>
+
+              <th>
+                <button class="sort-header" type="button" (click)="sortBy('category')">
+                  Category <span>{{ getSortIcon('category') }}</span>
+                </button>
+              </th>
+
+              <th>
+                <button class="sort-header" type="button" (click)="sortBy('duration')">
+                  Duration <span>{{ getSortIcon('duration') }}</span>
+                </button>
+              </th>
+
+              <th>
+                <button class="sort-header" type="button" (click)="sortBy('price')">
+                  Price <span>{{ getSortIcon('price') }}</span>
+                </button>
+              </th>
+
+              <th>
+                <button class="sort-header" type="button" (click)="sortBy('status')">
+                  Status <span>{{ getSortIcon('status') }}</span>
+                </button>
+              </th>
+
+              <th>
+                <button class="sort-header" type="button" (click)="sortBy('createdDate')">
+                  Created Date <span>{{ getSortIcon('createdDate') }}</span>
+                </button>
+              </th>
+
+              <th class="text-end">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
             @for (course of paginatedCourses(); track course.id) {
               <tr>
                 <td>
+                  <strong>#CRS-{{ course.id }}</strong>
+                </td>
+
+                <td>
                   <div class="course-name">
                     <strong>{{ course.courseName }}</strong>
-                    <span>#CRS-{{ course.id }}</span>
                   </div>
                 </td>
 

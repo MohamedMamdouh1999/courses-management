@@ -102,7 +102,7 @@
 
 table {
   width: 100%;
-  min-width: 900px;
+  min-width: 1050px;
   border-collapse: collapse;
 
   th,
@@ -125,6 +125,45 @@ table {
 
   tr:hover td {
     background: #f8fafc;
+  }
+}
+
+.sort-header {
+  border: 0;
+  background: transparent;
+  color: #64748b;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+
+  span {
+    font-size: 12px;
+  }
+
+  &:hover {
+    color: #2563eb;
+  }
+}
+
+.skeleton-line {
+  width: 100%;
+  height: 16px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 37%, #f1f5f9 63%);
+  background-size: 400% 100%;
+  animation: skeleton-loading 1.4s ease infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0 50%;
   }
 }
 

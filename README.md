@@ -43,13 +43,13 @@ npm install
 Run the application:
 
 ```bash
-npm start
+npm run open
 ```
 
 Or run without automatically opening the browser:
 
 ```bash
-npm run open
+npm start
 ```
 
 Then open:

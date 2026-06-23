@@ -9,6 +9,18 @@ import { ICourse } from '../../interfaces/course';
 
 import { CourseStatus } from '../../enums/course-status';
 
+type SortColumn =
+  | 'id'
+  | 'courseName'
+  | 'instructorName'
+  | 'category'
+  | 'duration'
+  | 'price'
+  | 'status'
+  | 'createdDate';
+
+type SortDirection = 'asc' | 'desc';
+
 @Component({
   selector: 'app-courses-list',
   imports: [SharedModule],
@@ -27,6 +39,13 @@ export class CoursesList {
   currentPage = signal(1);
   pageSize = signal(5);
 
+  isLoading = signal(true);
+
+  sortColumn = signal<SortColumn>('createdDate');
+  sortDirection = signal<SortDirection>('desc');
+
+  readonly skeletonRows = Array.from({ length: 5 });
+
   readonly categories = ['All', 'Frontend', 'Backend', 'Design', 'Mobile', 'DevOps', 'Data'];
   readonly statuses: Array<'All' | CourseStatus> = ['All', CourseStatus.Active, CourseStatus.Draft, CourseStatus.Archived];
 
@@ -44,19 +63,40 @@ export class CoursesList {
     });
   });
 
+  sortedCourses = computed(() => {
+    const courses = [...this.filteredCourses()];
+    const column = this.sortColumn();
+    const direction = this.sortDirection();
+
+    return courses.sort((firstCourse, secondCourse) => {
+      const firstValue = firstCourse[column];
+      const secondValue = secondCourse[column];
+
+      if (typeof firstValue === 'number' && typeof secondValue === 'number') {
+        return direction === 'asc' ? firstValue - secondValue : secondValue - firstValue;
+      }
+
+      return direction === 'asc' ? String(firstValue).localeCompare(String(secondValue)) : String(secondValue).localeCompare(String(firstValue));
+    });
+  });
+
   totalPages = computed(() => {
     return Math.max(Math.ceil(this.filteredCourses().length / this.pageSize()), 1);
   });
 
   paginatedCourses = computed(() => {
     const startIndex = (this.currentPage() - 1) * this.pageSize();
-    return this.filteredCourses().slice(startIndex, startIndex + this.pageSize());
+    return this.sortedCourses().slice(startIndex, startIndex + this.pageSize());
   });
 
   totalCourses = computed(() => this.courses().length);
   activeCourses = computed(() => this.courses().filter(course => course.status === CourseStatus.Active).length);
   draftCourses = computed(() => this.courses().filter(course => course.status === CourseStatus.Draft).length);
   archivedCourses = computed(() => this.courses().filter(course => course.status === CourseStatus.Archived).length);
+
+  constructor() {
+    setTimeout(() => this.isLoading.set(false), 400);
+  }
 
   onSearchChange(value: string): void {
     this.searchTerm.set(value);
@@ -104,6 +144,22 @@ export class CoursesList {
     };
 
     return statusClasses[status];
+  }
+
+  sortBy(column: SortColumn): void {
+    if (this.sortColumn() === column) {
+      this.sortDirection.set(this.sortDirection() === 'asc' ? 'desc' : 'asc');
+    } else {
+      this.sortColumn.set(column);
+      this.sortDirection.set('asc');
+    }
+
+    this.currentPage.set(1);
+  }
+
+  getSortIcon(column: SortColumn): string {
+    if (this.sortColumn() !== column) return '↕';
+    return this.sortDirection() === 'asc' ? '↑' : '↓';
   }
 
   getInstructorInitials(name: string): string {
