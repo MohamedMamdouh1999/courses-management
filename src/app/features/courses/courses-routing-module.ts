@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { courseExistsGuard } from './guards/course-exists-guard';
+
 const routes: Routes = [
   {
     path: '',
@@ -8,6 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'details/:id',
+    canMatch: [courseExistsGuard],
     loadComponent: () => import('./pages/course-details/course-details').then(c => c.CourseDetails)
   },
   {
@@ -16,6 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'edit/:id',
+    canMatch: [courseExistsGuard],
     loadComponent: () => import('./pages/course-form/course-form').then(c => c.CourseForm)
   }
 ];
