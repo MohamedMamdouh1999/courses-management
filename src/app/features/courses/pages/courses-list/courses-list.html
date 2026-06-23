@@ -191,7 +191,7 @@
                   <div class="actions">
                     <button [routerLink]="['/courses/details', course.id]">View</button>
                     <button [routerLink]="['/courses/edit', course.id]">Edit</button>
-                    <button class="danger" (click)="deleteCourse(course)">Delete</button>
+                    <button class="danger" (click)="openDeleteModal(course)">Delete</button>
                   </div>
                 </td>
               </tr>
@@ -243,4 +243,29 @@
       </div>
     }
   </div>
+  @if (courseToDelete(); as course) {
+  <div class="modal-backdrop">
+    <div class="delete-modal">
+      <div class="modal-icon">!</div>
+
+      <h3>Delete Course</h3>
+
+      <p>
+        Are you sure you want to delete
+        <strong>"{{ course.courseName }}"</strong>?
+        This action cannot be undone.
+      </p>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" (click)="closeDeleteModal()">
+          Cancel
+        </button>
+
+        <button type="button" class="btn btn-danger" (click)="confirmDeleteCourse()">
+          Delete Course
+        </button>
+      </div>
+    </div>
+  </div>
+}
 </section>

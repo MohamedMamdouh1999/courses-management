@@ -41,6 +41,8 @@ export class CoursesList {
 
   isLoading = signal(true);
 
+  courseToDelete = signal<ICourse | null>(null);
+
   sortColumn = signal<SortColumn>('createdDate');
   sortDirection = signal<SortDirection>('desc');
 
@@ -120,14 +122,24 @@ export class CoursesList {
     this.currentPage.set(1);
   }
 
-  deleteCourse(course: ICourse): void {
-    const isConfirmed = confirm(`Are you sure you want to delete "${course.courseName}"?`);
+  openDeleteModal(course: ICourse): void {
+    this.courseToDelete.set(course);
+  }
 
-    if (!isConfirmed) return;
+  closeDeleteModal(): void {
+    this.courseToDelete.set(null);
+  }
 
-    this.coursesService.deleteCourse(course.id);
+  confirmDeleteCourse(): void {
+    const selectedCourse = this.courseToDelete();
+
+    if (!selectedCourse) return;
+
+    this.coursesService.deleteCourse(selectedCourse.id);
     this.courses.set(this.coursesService.getCourses());
     this.currentPage.set(1);
+    this.courseToDelete.set(null);
+
     toast.success('Course deleted successfully');
   }
 
