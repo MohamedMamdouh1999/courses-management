@@ -1,0 +1,10 @@
+<app-navbar/>
+<main class="d-flex align-items-start">
+    <app-sidebar class="d-none d-lg-block"/>
+    <div class="content w-100 overflow-y-auto">
+        <router-outlet/>
+    </div>
+</main>
+<div [class]="languages.isRtl ? 'offcanvas-end' : 'offcanvas-start'" class="offcanvas d-block d-lg-none border-0 p-0" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <app-sidebar/>
+</div>

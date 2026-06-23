@@ -1,0 +1,11 @@
+main {
+    height: 100vh;
+    .content {
+        padding: 32px;
+        height: calc(100vh - 61px);
+        @media screen and (max-width: 991px) {
+            padding: 16px;
+            height: calc(100vh - 53px);
+        }
+    }
+}

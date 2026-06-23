@@ -1,0 +1,30 @@
+header {
+    padding: 16px 32px;
+    border-bottom: 1px solid #C3C6D7;
+    h1 {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 28px;
+    }
+    img {
+        height: 28px;
+    }
+    svg {
+        width: 24px;
+        height: 24px;
+        path {
+            fill: #64748B;
+            transition: fill .3s ease-in-out;
+        }
+        &:hover path {
+            fill: #3C83F6;
+        }
+    }
+    @media screen and (max-width: 991px) {
+        padding: 12px 16px;
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+}

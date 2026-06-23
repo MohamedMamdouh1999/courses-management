@@ -1,11 +1,34 @@
-@use "tailwindcss";
+@use 'bootstrap/scss/bootstrap' as *;
 
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
-
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #000;
+    background-color: #FAF8FF;
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+}
+ul {
+    padding: unset;
+    list-style: none;
+}
+a {
+    color: unset;
+    text-decoration: unset;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul {
+    margin: unset;
+}
+button {
+    border: unset;
+    padding-block: unset;
+    padding-inline: unset;
+    background-color: unset;
 }
