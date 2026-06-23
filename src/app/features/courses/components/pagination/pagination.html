@@ -1,0 +1,10 @@
+<div class="pagination">
+    <span>Showing page {{ currentPage() }} of {{ totalPages() }}</span>
+    <div>
+        <button type="button" [disabled]="currentPage() === 1" (click)="goToPage(currentPage() - 1)">Previous</button>
+        @for (page of pages(); track page) {
+            <button type="button" [class.active]="currentPage() === page" (click)="goToPage(page)">{{ page }}</button>
+        }
+        <button type="button" [disabled]="currentPage() === totalPages()" (click)="goToPage(currentPage() + 1)">Next</button>
+    </div>
+</div>
