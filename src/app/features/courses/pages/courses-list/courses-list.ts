@@ -28,7 +28,7 @@ export class CoursesList {
   pageSize = signal(5);
 
   readonly categories = ['All', 'Frontend', 'Backend', 'Design', 'Mobile', 'DevOps', 'Data'];
-  readonly statuses: Array<'All' | CourseStatus> = ['All', CourseStatus.ACTIVE, CourseStatus.DRAFT, CourseStatus.ARCHIVED];
+  readonly statuses: Array<'All' | CourseStatus> = ['All', CourseStatus.Active, CourseStatus.Draft, CourseStatus.Archived];
 
   filteredCourses = computed(() => {
     const search = this.searchTerm().toLowerCase().trim();
@@ -54,9 +54,9 @@ export class CoursesList {
   });
 
   totalCourses = computed(() => this.courses().length);
-  activeCourses = computed(() => this.courses().filter(course => course.status === CourseStatus.ACTIVE).length);
-  draftCourses = computed(() => this.courses().filter(course => course.status === CourseStatus.DRAFT).length);
-  archivedCourses = computed(() => this.courses().filter(course => course.status === CourseStatus.ARCHIVED).length);
+  activeCourses = computed(() => this.courses().filter(course => course.status === CourseStatus.Active).length);
+  draftCourses = computed(() => this.courses().filter(course => course.status === CourseStatus.Draft).length);
+  archivedCourses = computed(() => this.courses().filter(course => course.status === CourseStatus.Archived).length);
 
   onSearchChange(value: string): void {
     this.searchTerm.set(value);
@@ -97,7 +97,13 @@ export class CoursesList {
   }
 
   getStatusClass(status: CourseStatus): string {
-    return CourseStatus[status];
+    const statusClasses: Record<CourseStatus, string> = {
+      [CourseStatus.Active]: 'status-active',
+      [CourseStatus.Draft]: 'status-draft',
+      [CourseStatus.Archived]: 'status-archived',
+    };
+    console.log(status, statusClasses);
+    return statusClasses[status];
   }
 
   getInstructorInitials(name: string): string {

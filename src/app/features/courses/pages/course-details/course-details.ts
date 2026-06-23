@@ -42,6 +42,12 @@ export class CourseDetails implements OnInit {
   }
 
   getStatusClass(status: CourseStatus): string {
-    return CourseStatus[status];
+    const statusClasses: Record<CourseStatus, string> = {
+      [CourseStatus.Active]: 'status-active',
+      [CourseStatus.Draft]: 'status-draft',
+      [CourseStatus.Archived]: 'status-archived',
+    };
+
+    return statusClasses[status];
   }
 }
