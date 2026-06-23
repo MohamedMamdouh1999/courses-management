@@ -33,7 +33,7 @@ export class CourseForm implements OnInit {
     category: ['', Validators.required],
     duration: [1, [Validators.required, Validators.min(1)]],
     price: [0, [Validators.required, Validators.min(0)]],
-    status: ['Active' as CourseStatus, Validators.required],
+    status: [CourseStatus.Active, Validators.required],
     description: ['', Validators.maxLength(500)],
   });
 

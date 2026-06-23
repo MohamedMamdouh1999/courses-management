@@ -102,7 +102,7 @@ export class CoursesList {
       [CourseStatus.Draft]: 'status-draft',
       [CourseStatus.Archived]: 'status-archived',
     };
-    console.log(status, statusClasses);
+
     return statusClasses[status];
   }
 
