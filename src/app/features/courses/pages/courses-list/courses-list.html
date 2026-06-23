@@ -1,33 +1,33 @@
 <section class="courses-page">
   <div class="page-header">
     <div>
-      <h1>Course Management</h1>
-      <p>Manage courses, instructors, pricing, and publication status</p>
+      <h3>{{ 'COURSES_LIST.TITLE' | translate }}</h3>
+      <p>{{ 'COURSES_LIST.SUBTITLE' | translate }}</p>
     </div>
 
     <button class="btn btn-primary" routerLink="/courses/add">
-      + Add Course
+      + {{ 'COMMON.ADD_COURSE' | translate }}
     </button>
   </div>
 
   <div class="stats-grid">
     <div class="stat-card">
-      <span>Total Courses</span>
+      <span>{{ 'COURSES_LIST.TOTAL_COURSES' | translate }}</span>
       <strong>{{ totalCourses() }}</strong>
     </div>
 
     <div class="stat-card">
-      <span>Active Courses</span>
+      <span>{{ 'COURSES_LIST.ACTIVE_COURSES' | translate }}</span>
       <strong>{{ activeCourses() }}</strong>
     </div>
 
     <div class="stat-card">
-      <span>Draft Courses</span>
+      <span>{{ 'COURSES_LIST.DRAFT_COURSES' | translate }}</span>
       <strong>{{ draftCourses() }}</strong>
     </div>
 
     <div class="stat-card">
-      <span>Archived Courses</span>
+      <span>{{ 'COURSES_LIST.ARCHIVED_COURSES' | translate }}</span>
       <strong>{{ archivedCourses() }}</strong>
     </div>
   </div>
@@ -36,7 +36,7 @@
     <div class="filters">
       <input
         type="text"
-        placeholder="Search by course name"
+        [placeholder]="'COURSES_LIST.SEARCH_PLACEHOLDER' | translate"
         [ngModel]="searchTerm()"
         (ngModelChange)="onSearchChange($event)"
       />
@@ -46,7 +46,7 @@
         (ngModelChange)="onStatusChange($event)"
       >
         @for (status of statuses; track status) {
-          <option [value]="status">{{ status }}</option>
+          <option [ngValue]="status">{{ getStatusLabelKey(status) | translate }}</option>
         }
       </select>
 
@@ -55,12 +55,12 @@
         (ngModelChange)="onCategoryChange($event)"
       >
         @for (category of categories; track category) {
-          <option [value]="category">{{ category }}</option>
+          <option [ngValue]="category">{{ getCategoryLabelKey(category) | translate }}</option>
         }
       </select>
 
       <button class="btn btn-secondary" type="button" (click)="clearFilters()">
-        Clear Filters
+        {{ 'COMMON.CLEAR_FILTERS' | translate }}
       </button>
     </div>
 
@@ -69,15 +69,15 @@
         <table>
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Course Name</th>
-              <th>Instructor</th>
-              <th>Category</th>
-              <th>Duration</th>
-              <th>Price</th>
-              <th>Status</th>
-              <th>Created Date</th>
-              <th class="text-end">Actions</th>
+              <th>{{ 'COURSES_LIST.HEADERS.ID' | translate }}</th>
+              <th>{{ 'COURSES_LIST.HEADERS.COURSE_NAME' | translate }}</th>
+              <th>{{ 'COURSES_LIST.HEADERS.INSTRUCTOR' | translate }}</th>
+              <th>{{ 'COURSES_LIST.HEADERS.CATEGORY' | translate }}</th>
+              <th>{{ 'COURSES_LIST.HEADERS.DURATION' | translate }}</th>
+              <th>{{ 'COURSES_LIST.HEADERS.PRICE' | translate }}</th>
+              <th>{{ 'COURSES_LIST.HEADERS.STATUS' | translate }}</th>
+              <th>{{ 'COURSES_LIST.HEADERS.CREATED_DATE' | translate }}</th>
+              <th class="text-end">{{ 'COURSES_LIST.HEADERS.ACTIONS' | translate }}</th>
             </tr>
           </thead>
 
@@ -101,53 +101,53 @@
             <tr>
               <th>
                 <button class="sort-header" type="button" (click)="sortBy('id')">
-                  ID <span>{{ getSortIcon('id') }}</span>
+                  {{ 'COURSES_LIST.HEADERS.ID' | translate }} <span>{{ getSortIcon('id') }}</span>
                 </button>
               </th>
 
               <th>
                 <button class="sort-header" type="button" (click)="sortBy('courseName')">
-                  Course Name <span>{{ getSortIcon('courseName') }}</span>
+                  {{ 'COURSES_LIST.HEADERS.COURSE_NAME' | translate }} <span>{{ getSortIcon('courseName') }}</span>
                 </button>
               </th>
 
               <th>
                 <button class="sort-header" type="button" (click)="sortBy('instructorName')">
-                  Instructor <span>{{ getSortIcon('instructorName') }}</span>
+                  {{ 'COURSES_LIST.HEADERS.INSTRUCTOR' | translate }} <span>{{ getSortIcon('instructorName') }}</span>
                 </button>
               </th>
 
               <th>
                 <button class="sort-header" type="button" (click)="sortBy('category')">
-                  Category <span>{{ getSortIcon('category') }}</span>
+                  {{ 'COURSES_LIST.HEADERS.CATEGORY' | translate }} <span>{{ getSortIcon('category') }}</span>
                 </button>
               </th>
 
               <th>
                 <button class="sort-header" type="button" (click)="sortBy('duration')">
-                  Duration <span>{{ getSortIcon('duration') }}</span>
+                  {{ 'COURSES_LIST.HEADERS.DURATION' | translate }} <span>{{ getSortIcon('duration') }}</span>
                 </button>
               </th>
 
               <th>
                 <button class="sort-header" type="button" (click)="sortBy('price')">
-                  Price <span>{{ getSortIcon('price') }}</span>
+                  {{ 'COURSES_LIST.HEADERS.PRICE' | translate }} <span>{{ getSortIcon('price') }}</span>
                 </button>
               </th>
 
               <th>
                 <button class="sort-header" type="button" (click)="sortBy('status')">
-                  Status <span>{{ getSortIcon('status') }}</span>
+                  {{ 'COURSES_LIST.HEADERS.STATUS' | translate }} <span>{{ getSortIcon('status') }}</span>
                 </button>
               </th>
 
               <th>
                 <button class="sort-header" type="button" (click)="sortBy('createdDate')">
-                  Created Date <span>{{ getSortIcon('createdDate') }}</span>
+                  {{ 'COURSES_LIST.HEADERS.CREATED_DATE' | translate }} <span>{{ getSortIcon('createdDate') }}</span>
                 </button>
               </th>
 
-              <th class="text-end">Actions</th>
+              <th class="text-end">{{ 'COURSES_LIST.HEADERS.ACTIONS' | translate }}</th>
             </tr>
           </thead>
 
@@ -172,12 +172,12 @@
                 </td>
 
                 <td>
-                  <span class="category-badge">{{ course.category }}</span>
+                  <span class="category-badge">{{ getCategoryLabelKey(course.category) | translate }}</span>
                 </td>
 
-                <td>{{ course.duration }} hrs</td>
+                <td>{{ course.duration }} {{ 'COURSES_LIST.HOURS_SHORT' | translate }}</td>
 
-                <td>{{ course.price | number }} EGP</td>
+                <td>{{ course.price | number }} {{ 'COURSES_LIST.EGP' | translate }}</td>
 
                 <td>
                   <app-status-badge [status]="course.status" />
@@ -187,9 +187,9 @@
 
                 <td>
                   <div class="actions">
-                    <button [routerLink]="['/courses/details', course.id]">View</button>
-                    <button [routerLink]="['/courses/edit', course.id]">Edit</button>
-                    <button class="danger" (click)="openDeleteModal(course)">Delete</button>
+                    <button [routerLink]="['/courses/details', course.id]">{{ 'COMMON.VIEW' | translate }}</button>
+                    <button [routerLink]="['/courses/edit', course.id]">{{ 'COMMON.EDIT' | translate }}</button>
+                    <button class="danger" (click)="openDeleteModal(course)">{{ 'COMMON.DELETE' | translate }}</button>
                   </div>
                 </td>
               </tr>
@@ -201,10 +201,10 @@
       <app-pagination [currentPage]="currentPage()" [totalPages]="totalPages()" (pageChange)="goToPage($event)"/>
     } @else {
       <div class="empty-state">
-        <h3>No courses found</h3>
-        <p>Try adjusting your filters or create your first course.</p>
+        <h3>{{ 'COURSES_LIST.NO_COURSES_TITLE' | translate }}</h3>
+        <p>{{ 'COURSES_LIST.NO_COURSES_MESSAGE' | translate }}</p>
         <button class="btn btn-primary" routerLink="/courses/add">
-          Add First Course
+          {{ 'COURSES_LIST.ADD_FIRST_COURSE' | translate }}
         </button>
       </div>
     }
@@ -214,21 +214,21 @@
     <div class="delete-modal">
       <div class="modal-icon">!</div>
 
-      <h3>Delete Course</h3>
+      <h3>{{ 'DELETE_MODAL.TITLE' | translate }}</h3>
 
       <p>
-        Are you sure you want to delete
-        <strong>"{{ course.courseName }}"</strong>?
-        This action cannot be undone.
+        {{ 'DELETE_MODAL.MESSAGE' | translate: { courseName: course.courseName } }}
+        <br />
+        {{ 'DELETE_MODAL.WARNING' | translate }}
       </p>
 
       <div class="modal-actions">
         <button type="button" class="btn btn-secondary" (click)="closeDeleteModal()">
-          Cancel
+          {{ 'COMMON.CANCEL' | translate }}
         </button>
 
         <button type="button" class="btn btn-danger" (click)="confirmDeleteCourse()">
-          Delete Course
+          {{ 'COMMON.DELETE_COURSE' | translate }}
         </button>
       </div>
     </div>

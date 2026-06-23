@@ -18,18 +18,24 @@ export class Languages  {
         @Inject(DOCUMENT) private readonly document: Document,
         private readonly translationService: Translation
     ) {
-        this.currentLanguage.set(localStorage.getItem(this.languageKey()) as LanguagesEnum || this.defaultLanguage());
+        const savedLanguage = localStorage.getItem(this.languageKey()) as LanguagesEnum | null;
+        const language = Object.values(LanguagesEnum).includes(savedLanguage as LanguagesEnum)
+            ? savedLanguage as LanguagesEnum
+            : this.defaultLanguage();
+
+        this.currentLanguage.set(language);
         this.html.set(this.document.getElementsByTagName('html')[0]);
     }
 
     initDefaultLanguage(): void {
-        this.translationService.setFallbackLanguage(this.currentLanguage() as LanguagesEnum);
+        this.translationService.setFallbackLanguage(this.defaultLanguage());
+        this.translationService.useLanguage(this.currentLanguage()).subscribe();
         localStorage.setItem(this.languageKey(), this.currentLanguage());
         this.updateLayoutDirection();
     }
 
     changeLanguage(language: LanguagesEnum): void {
-        this.translationService.useLanguage(language);
+        this.translationService.useLanguage(language).subscribe();
         this.currentLanguage.set(language);
         localStorage.setItem(this.languageKey(), language);
         this.updateLayoutDirection();

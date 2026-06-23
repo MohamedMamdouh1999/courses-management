@@ -1,4 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { toast } from 'ngx-sonner';
 
 import { SharedModule } from '../../../../shared/shared-module';
@@ -32,6 +33,7 @@ type SortDirection = 'asc' | 'desc';
 })
 export class CoursesList {
   private coursesService = inject(Courses);
+  private translate = inject(TranslateService);
 
   courses = signal<ICourse[]>(this.coursesService.getCourses());
 
@@ -53,6 +55,16 @@ export class CoursesList {
 
   readonly categories = ['All', 'Frontend', 'Backend', 'Design', 'Mobile', 'DevOps', 'Data'];
   readonly statuses: Array<'All' | CourseStatus> = ['All', CourseStatus.Active, CourseStatus.Draft, CourseStatus.Archived];
+
+  private readonly categoryTranslationKeys: Record<string, string> = {
+    All: 'FILTERS.ALL_CATEGORIES',
+    Frontend: 'CATEGORIES.FRONTEND',
+    Backend: 'CATEGORIES.BACKEND',
+    Design: 'CATEGORIES.DESIGN',
+    Mobile: 'CATEGORIES.MOBILE',
+    DevOps: 'CATEGORIES.DEVOPS',
+    Data: 'CATEGORIES.DATA',
+  };
 
   filteredCourses = computed(() => {
     const search = this.searchTerm().toLowerCase().trim();
@@ -143,7 +155,7 @@ export class CoursesList {
     this.currentPage.set(1);
     this.courseToDelete.set(null);
 
-    toast.success('Course deleted successfully');
+    toast.success(this.translate.instant('TOASTS.COURSE_DELETED'));
   }
 
   goToPage(page: number): void {
@@ -169,5 +181,14 @@ export class CoursesList {
 
   getInstructorInitials(name: string): string {
     return name.split(' ').map(part => part[0]).join('').slice(0, 2).toUpperCase();
+  }
+
+  getStatusLabelKey(status: 'All' | CourseStatus): string {
+    if (status === 'All') return 'FILTERS.ALL_STATUSES';
+    return `STATUSES.${status.toUpperCase()}`;
+  }
+
+  getCategoryLabelKey(category: string): string {
+    return this.categoryTranslationKeys[category] ?? category;
   }
 }

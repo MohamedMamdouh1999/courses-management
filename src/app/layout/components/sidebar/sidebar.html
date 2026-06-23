@@ -1,6 +1,6 @@
 <aside class="h-100 d-flex flex-column justify-content-between">
     <div class="d-flex flex-column">
-        <button class="me-auto d-lg-none" data-bs-dismiss="offcanvas" aria-label="Close">
+        <button class="me-auto d-lg-none" data-bs-dismiss="offcanvas" [attr.aria-label]="'LAYOUT.CLOSE_MENU' | translate">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M183.1 137.4C170.6 124.9 150.3 124.9 137.8 137.4C125.3 149.9 125.3 170.2 137.8 182.7L275.2 320L137.9 457.4C125.4 469.9 125.4 490.2 137.9 502.7C150.4 515.2 170.7 515.2 183.2 502.7L320.5 365.3L457.9 502.6C470.4 515.1 490.7 515.1 503.2 502.6C515.7 490.1 515.7 469.8 503.2 457.3L365.8 320L503.1 182.6C515.6 170.1 515.6 149.8 503.1 137.3C490.6 124.8 470.3 124.8 457.8 137.3L320.5 274.7L183.1 137.4z"/></svg>
         </button>
         <nav class="d-flex flex-column overflow-y-auto">
@@ -8,17 +8,8 @@
                 <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M15 10.5V5.325L8.25 9L0 4.5L8.25 0L16.5 4.5V10.5H15ZM8.25 13.5L3 10.65V6.9L8.25 9.75L13.5 6.9V10.65L8.25 13.5Z" fill="#004AC6"/>
                 </svg>
-                <span translate="courses"></span>
+                <span>{{ 'LAYOUT.COURSES' | translate }}</span>
             </a>
         </nav>
-    </div>
-    <div class="user-info d-flex align-items-center">
-        <div class="image rounded-circle overflow-hidden">
-            <img class="w-100 h-100 object-fit-cover" loading="lazy" src="https://scontent.fcai19-1.fna.fbcdn.net/v/t39.30808-6/621601707_924553486758137_6697207445229297597_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=o6XhPpn_XDMQ7kNvwHo-Nve&_nc_oc=AdmGooyx6Nio0YuNpD-YANNuL0UpTIjQq53-5V_3VHLer2rSRi_Nxn-suS0OOX6BerA&_nc_zt=23&_nc_ht=scontent.fcai19-1.fna&_nc_gid=SIrJDYaQdaivLsoCNb309g&_nc_ss=8&oh=00_AfxXsJRQQUdMgES3b7fVwqgRocrefcLDDC0IScBLIEioMw&oe=69B7D132" alt="Motoriya">
-        </div>
-        <div class="text-nowrap">
-            <h6>Mohamed Mamdouh</h6>
-            <span>System Manager</span>
-        </div>
     </div>
 </aside>

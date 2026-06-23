@@ -1,10 +1,12 @@
-import { inject, Service } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { InterpolatableTranslationObject, TranslateService } from '@ngx-translate/core';
 
 import { Languages } from '../enums/languages';
 
-@Service()
+@Injectable({
+    providedIn: 'root'
+})
 export class Translation {
     private readonly translateService = inject(TranslateService);
 

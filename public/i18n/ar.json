@@ -1,4 +1,130 @@
 {
-    "coursesManagement": "ادارة الدورات",
-    "courses": "الدورات"
+  "COMMON": {
+    "VIEW": "عرض",
+    "EDIT": "تعديل",
+    "DELETE": "حذف",
+    "CANCEL": "إلغاء",
+    "CLEAR_FILTERS": "مسح الفلاتر",
+    "ADD_COURSE": "إضافة دورة",
+    "SAVE_COURSE": "حفظ الدورة",
+    "UPDATE_COURSE": "تحديث الدورة",
+    "EDIT_COURSE": "تعديل الدورة",
+    "DELETE_COURSE": "حذف الدورة",
+    "BACK_TO_COURSES": "العودة للدورات"
+  },
+  "LAYOUT": {
+    "COURSES_MANAGEMENT": "إدارة الدورات",
+    "COURSES": "الدورات",
+    "SYSTEM_MANAGER": "مدير النظام",
+    "OPEN_MENU": "فتح القائمة",
+    "CLOSE_MENU": "إغلاق القائمة",
+    "NOTIFICATIONS": "الإشعارات",
+    "CHANGE_LANGUAGE": "تغيير اللغة"
+  },
+  "COURSES_LIST": {
+    "TITLE": "إدارة الدورات",
+    "SUBTITLE": "إدارة الدورات والمدربين والأسعار وحالة النشر",
+    "SEARCH_PLACEHOLDER": "ابحث باسم الدورة",
+    "TOTAL_COURSES": "إجمالي الدورات",
+    "ACTIVE_COURSES": "الدورات النشطة",
+    "DRAFT_COURSES": "الدورات المسودة",
+    "ARCHIVED_COURSES": "الدورات المؤرشفة",
+    "HOURS_SHORT": "ساعة",
+    "EGP": "جنيه",
+    "HEADERS": {
+      "ID": "الكود",
+      "COURSE_NAME": "اسم الدورة",
+      "INSTRUCTOR": "المدرب",
+      "CATEGORY": "التصنيف",
+      "DURATION": "المدة",
+      "PRICE": "السعر",
+      "STATUS": "الحالة",
+      "CREATED_DATE": "تاريخ الإنشاء",
+      "ACTIONS": "الإجراءات"
+    },
+    "NO_COURSES_TITLE": "لا توجد دورات",
+    "NO_COURSES_MESSAGE": "جرّب تعديل الفلاتر أو أضف أول دورة.",
+    "ADD_FIRST_COURSE": "إضافة أول دورة"
+  },
+  "COURSE_FORM": {
+    "ADD_TITLE": "إضافة دورة جديدة",
+    "EDIT_TITLE": "تعديل الدورة",
+    "ADD_SUBTITLE": "املأ بيانات الدورة بالأسفل",
+    "EDIT_SUBTITLE": "حدّث بيانات الدورة المحددة",
+    "FIELDS": {
+      "COURSE_NAME": "اسم الدورة",
+      "INSTRUCTOR_NAME": "اسم المدرب",
+      "CATEGORY": "التصنيف",
+      "DURATION": "المدة بالساعات",
+      "PRICE": "السعر",
+      "STATUS": "الحالة",
+      "DESCRIPTION": "الوصف"
+    },
+    "PLACEHOLDERS": {
+      "COURSE_NAME": "اكتب اسم الدورة",
+      "INSTRUCTOR_NAME": "اكتب اسم المدرب",
+      "CATEGORY": "اختر التصنيف",
+      "DURATION": "مثال: 20",
+      "PRICE": "مثال: 1500",
+      "DESCRIPTION": "اكتب وصفًا مختصرًا للدورة"
+    },
+    "VALIDATION": {
+      "COURSE_NAME_REQUIRED": "اسم الدورة مطلوب.",
+      "COURSE_NAME_MIN_LENGTH": "اسم الدورة يجب ألا يقل عن 3 حروف.",
+      "INSTRUCTOR_REQUIRED": "اسم المدرب مطلوب.",
+      "CATEGORY_REQUIRED": "التصنيف مطلوب.",
+      "DURATION_REQUIRED": "المدة مطلوبة.",
+      "DURATION_MIN": "المدة يجب أن تكون أكبر من 0.",
+      "PRICE_REQUIRED": "السعر مطلوب.",
+      "PRICE_MIN": "السعر يجب أن يكون 0 أو أكثر.",
+      "STATUS_REQUIRED": "الحالة مطلوبة.",
+      "DESCRIPTION_MAX_LENGTH": "الوصف لا يمكن أن يتجاوز 500 حرف."
+    }
+  },
+  "COURSE_DETAILS": {
+    "TITLE": "تفاصيل الدورة",
+    "SUBTITLE": "مراجعة بيانات الدورة بالكامل",
+    "CREATED_ON": "تم الإنشاء في {{date}}",
+    "INSTRUCTOR": "المدرب",
+    "CATEGORY": "التصنيف",
+    "DURATION": "المدة",
+    "PRICE": "السعر",
+    "STATUS": "الحالة",
+    "CREATED_DATE": "تاريخ الإنشاء",
+    "DESCRIPTION": "الوصف",
+    "NO_DESCRIPTION": "لا يوجد وصف."
+  },
+  "DELETE_MODAL": {
+    "TITLE": "حذف الدورة",
+    "MESSAGE": "هل أنت متأكد أنك تريد حذف \"{{courseName}}\"؟",
+    "WARNING": "لا يمكن التراجع عن هذا الإجراء."
+  },
+  "PAGINATION": {
+    "SHOWING_PAGE": "عرض الصفحة {{current}} من {{total}}",
+    "PREVIOUS": "السابق",
+    "NEXT": "التالي"
+  },
+  "FILTERS": {
+    "ALL_STATUSES": "كل الحالات",
+    "ALL_CATEGORIES": "كل التصنيفات"
+  },
+  "STATUSES": {
+    "ACTIVE": "نشط",
+    "DRAFT": "مسودة",
+    "ARCHIVED": "مؤرشف"
+  },
+  "CATEGORIES": {
+    "FRONTEND": "فرونت إند",
+    "BACKEND": "باك إند",
+    "DESIGN": "تصميم",
+    "MOBILE": "موبايل",
+    "DEVOPS": "ديف أوبس",
+    "DATA": "بيانات"
+  },
+  "TOASTS": {
+    "COURSE_DELETED": "تم حذف الدورة بنجاح",
+    "COURSE_CREATED": "تم إنشاء الدورة بنجاح",
+    "COURSE_UPDATED": "تم تحديث الدورة بنجاح",
+    "COURSE_NOT_FOUND": "الدورة غير موجودة"
+  }
 }

@@ -1,4 +1,130 @@
 {
-    "coursesManagement": "Courses Management",
-    "courses": "Courses"
+  "COMMON": {
+    "VIEW": "View",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "CANCEL": "Cancel",
+    "CLEAR_FILTERS": "Clear Filters",
+    "ADD_COURSE": "Add Course",
+    "SAVE_COURSE": "Save Course",
+    "UPDATE_COURSE": "Update Course",
+    "EDIT_COURSE": "Edit Course",
+    "DELETE_COURSE": "Delete Course",
+    "BACK_TO_COURSES": "Back to Courses"
+  },
+  "LAYOUT": {
+    "COURSES_MANAGEMENT": "Course Management",
+    "COURSES": "Courses",
+    "SYSTEM_MANAGER": "System Manager",
+    "OPEN_MENU": "Open menu",
+    "CLOSE_MENU": "Close menu",
+    "NOTIFICATIONS": "Notifications",
+    "CHANGE_LANGUAGE": "Change language"
+  },
+  "COURSES_LIST": {
+    "TITLE": "Course Management",
+    "SUBTITLE": "Manage courses, instructors, pricing, and publication status",
+    "SEARCH_PLACEHOLDER": "Search by course name",
+    "TOTAL_COURSES": "Total Courses",
+    "ACTIVE_COURSES": "Active Courses",
+    "DRAFT_COURSES": "Draft Courses",
+    "ARCHIVED_COURSES": "Archived Courses",
+    "HOURS_SHORT": "hrs",
+    "EGP": "EGP",
+    "HEADERS": {
+      "ID": "ID",
+      "COURSE_NAME": "Course Name",
+      "INSTRUCTOR": "Instructor",
+      "CATEGORY": "Category",
+      "DURATION": "Duration",
+      "PRICE": "Price",
+      "STATUS": "Status",
+      "CREATED_DATE": "Created Date",
+      "ACTIONS": "Actions"
+    },
+    "NO_COURSES_TITLE": "No courses found",
+    "NO_COURSES_MESSAGE": "Try adjusting your filters or create your first course.",
+    "ADD_FIRST_COURSE": "Add First Course"
+  },
+  "COURSE_FORM": {
+    "ADD_TITLE": "Add New Course",
+    "EDIT_TITLE": "Edit Course",
+    "ADD_SUBTITLE": "Fill in the course information below",
+    "EDIT_SUBTITLE": "Update the selected course information",
+    "FIELDS": {
+      "COURSE_NAME": "Course Name",
+      "INSTRUCTOR_NAME": "Instructor Name",
+      "CATEGORY": "Category",
+      "DURATION": "Duration in Hours",
+      "PRICE": "Price",
+      "STATUS": "Status",
+      "DESCRIPTION": "Description"
+    },
+    "PLACEHOLDERS": {
+      "COURSE_NAME": "Enter course name",
+      "INSTRUCTOR_NAME": "Enter instructor name",
+      "CATEGORY": "Select category",
+      "DURATION": "Example: 20",
+      "PRICE": "Example: 1500",
+      "DESCRIPTION": "Write a short course description"
+    },
+    "VALIDATION": {
+      "COURSE_NAME_REQUIRED": "Course name is required.",
+      "COURSE_NAME_MIN_LENGTH": "Course name must be at least 3 characters.",
+      "INSTRUCTOR_REQUIRED": "Instructor name is required.",
+      "CATEGORY_REQUIRED": "Category is required.",
+      "DURATION_REQUIRED": "Duration is required.",
+      "DURATION_MIN": "Duration must be greater than 0.",
+      "PRICE_REQUIRED": "Price is required.",
+      "PRICE_MIN": "Price must be 0 or higher.",
+      "STATUS_REQUIRED": "Status is required.",
+      "DESCRIPTION_MAX_LENGTH": "Description cannot exceed 500 characters."
+    }
+  },
+  "COURSE_DETAILS": {
+    "TITLE": "Course Details",
+    "SUBTITLE": "Review full course information",
+    "CREATED_ON": "Created on {{date}}",
+    "INSTRUCTOR": "Instructor",
+    "CATEGORY": "Category",
+    "DURATION": "Duration",
+    "PRICE": "Price",
+    "STATUS": "Status",
+    "CREATED_DATE": "Created Date",
+    "DESCRIPTION": "Description",
+    "NO_DESCRIPTION": "No description provided."
+  },
+  "DELETE_MODAL": {
+    "TITLE": "Delete Course",
+    "MESSAGE": "Are you sure you want to delete \"{{courseName}}\"?",
+    "WARNING": "This action cannot be undone."
+  },
+  "PAGINATION": {
+    "SHOWING_PAGE": "Showing page {{current}} of {{total}}",
+    "PREVIOUS": "Previous",
+    "NEXT": "Next"
+  },
+  "FILTERS": {
+    "ALL_STATUSES": "All Statuses",
+    "ALL_CATEGORIES": "All Categories"
+  },
+  "STATUSES": {
+    "ACTIVE": "Active",
+    "DRAFT": "Draft",
+    "ARCHIVED": "Archived"
+  },
+  "CATEGORIES": {
+    "FRONTEND": "Frontend",
+    "BACKEND": "Backend",
+    "DESIGN": "Design",
+    "MOBILE": "Mobile",
+    "DEVOPS": "DevOps",
+    "DATA": "Data"
+  },
+  "TOASTS": {
+    "COURSE_DELETED": "Course deleted successfully",
+    "COURSE_CREATED": "Course created successfully",
+    "COURSE_UPDATED": "Course updated successfully",
+    "COURSE_NOT_FOUND": "Course not found"
+  }
 }

@@ -1,11 +1,11 @@
 <section class="form-page">
   <div class="page-header">
     <div>
-      <button class="back-btn" routerLink="/courses">← Back to Courses</button>
+      <button class="back-btn" routerLink="/courses">← {{ 'COMMON.BACK_TO_COURSES' | translate }}</button>
 
-      <h1>{{ isEditMode() ? 'Edit Course' : 'Add New Course' }}</h1>
+      <h3>{{ (isEditMode() ? 'COURSE_FORM.EDIT_TITLE' : 'COURSE_FORM.ADD_TITLE') | translate }}</h3>
       <p>
-        {{ isEditMode() ? 'Update the selected course information' : 'Fill in the course information below' }}
+        {{ (isEditMode() ? 'COURSE_FORM.EDIT_SUBTITLE' : 'COURSE_FORM.ADD_SUBTITLE') | translate }}
       </p>
     </div>
   </div>
@@ -13,87 +13,87 @@
   <form class="form-card" [formGroup]="form" (ngSubmit)="submit()">
     <div class="form-grid">
       <div class="form-group">
-        <label>Course Name</label>
-        <input type="text" formControlName="courseName" placeholder="Enter course name" />
+        <label>{{ 'COURSE_FORM.FIELDS.COURSE_NAME' | translate }}</label>
+        <input type="text" formControlName="courseName" [placeholder]="'COURSE_FORM.PLACEHOLDERS.COURSE_NAME' | translate" />
 
         @if (hasError('courseName', 'required')) {
-          <small>Course name is required.</small>
+          <small>{{ 'COURSE_FORM.VALIDATION.COURSE_NAME_REQUIRED' | translate }}</small>
         }
 
         @if (hasError('courseName', 'minlength')) {
-          <small>Course name must be at least 3 characters.</small>
+          <small>{{ 'COURSE_FORM.VALIDATION.COURSE_NAME_MIN_LENGTH' | translate }}</small>
         }
       </div>
 
       <div class="form-group">
-        <label>Instructor Name</label>
-        <input type="text" formControlName="instructorName" placeholder="Enter instructor name" />
+        <label>{{ 'COURSE_FORM.FIELDS.INSTRUCTOR_NAME' | translate }}</label>
+        <input type="text" formControlName="instructorName" [placeholder]="'COURSE_FORM.PLACEHOLDERS.INSTRUCTOR_NAME' | translate" />
 
         @if (hasError('instructorName', 'required')) {
-          <small>Instructor name is required.</small>
+          <small>{{ 'COURSE_FORM.VALIDATION.INSTRUCTOR_REQUIRED' | translate }}</small>
         }
       </div>
 
       <div class="form-group">
-        <label>Category</label>
+        <label>{{ 'COURSE_FORM.FIELDS.CATEGORY' | translate }}</label>
         <select formControlName="category">
-          <option value="">Select category</option>
+          <option value="">{{ 'COURSE_FORM.PLACEHOLDERS.CATEGORY' | translate }}</option>
 
           @for (category of categories; track category) {
-            <option [value]="category">{{ category | titlecase }}</option>
+            <option [ngValue]="category">{{ getCategoryLabelKey(category) | translate }}</option>
           }
         </select>
 
         @if (hasError('category', 'required')) {
-          <small>Category is required.</small>
+          <small>{{ 'COURSE_FORM.VALIDATION.CATEGORY_REQUIRED' | translate }}</small>
         }
       </div>
 
       <div class="form-group">
-        <label>Duration in Hours</label>
-        <input type="number" formControlName="duration" placeholder="Example: 20" />
+        <label>{{ 'COURSE_FORM.FIELDS.DURATION' | translate }}</label>
+        <input type="number" formControlName="duration" [placeholder]="'COURSE_FORM.PLACEHOLDERS.DURATION' | translate" />
 
         @if (hasError('duration', 'required')) {
-          <small>Duration is required.</small>
+          <small>{{ 'COURSE_FORM.VALIDATION.DURATION_REQUIRED' | translate }}</small>
         }
 
         @if (hasError('duration', 'min')) {
-          <small>Duration must be greater than 0.</small>
+          <small>{{ 'COURSE_FORM.VALIDATION.DURATION_MIN' | translate }}</small>
         }
       </div>
 
       <div class="form-group">
-        <label>Price</label>
-        <input type="number" formControlName="price" placeholder="Example: 1500" />
+        <label>{{ 'COURSE_FORM.FIELDS.PRICE' | translate }}</label>
+        <input type="number" formControlName="price" [placeholder]="'COURSE_FORM.PLACEHOLDERS.PRICE' | translate" />
 
         @if (hasError('price', 'required')) {
-          <small>Price is required.</small>
+          <small>{{ 'COURSE_FORM.VALIDATION.PRICE_REQUIRED' | translate }}</small>
         }
 
         @if (hasError('price', 'min')) {
-          <small>Price must be 0 or higher.</small>
+          <small>{{ 'COURSE_FORM.VALIDATION.PRICE_MIN' | translate }}</small>
         }
       </div>
 
       <div class="form-group">
-        <label>Status</label>
+        <label>{{ 'COURSE_FORM.FIELDS.STATUS' | translate }}</label>
         <select formControlName="status">
           @for (status of statuses; track status) {
-            <option [value]="status">{{ status | titlecase }}</option>
+            <option [ngValue]="status">{{ getStatusLabelKey(status) | translate }}</option>
           }
         </select>
 
         @if (hasError('status', 'required')) {
-          <small>Status is required.</small>
+          <small>{{ 'COURSE_FORM.VALIDATION.STATUS_REQUIRED' | translate }}</small>
         }
       </div>
 
       <div class="form-group full-width">
-        <label>Description</label>
+        <label>{{ 'COURSE_FORM.FIELDS.DESCRIPTION' | translate }}</label>
         <textarea
           rows="5"
           formControlName="description"
-          placeholder="Write a short course description"
+          [placeholder]="'COURSE_FORM.PLACEHOLDERS.DESCRIPTION' | translate"
         ></textarea>
 
         <div class="counter">
@@ -101,18 +101,18 @@
         </div>
 
         @if (hasError('description', 'maxlength')) {
-          <small>Description cannot exceed 500 characters.</small>
+          <small>{{ 'COURSE_FORM.VALIDATION.DESCRIPTION_MAX_LENGTH' | translate }}</small>
         }
       </div>
     </div>
 
     <div class="form-actions">
       <button type="button" class="btn btn-secondary" routerLink="/courses">
-        Cancel
+        {{ 'COMMON.CANCEL' | translate }}
       </button>
 
       <button type="submit" class="btn btn-primary">
-        {{ isEditMode() ? 'Update Course' : 'Save Course' }}
+        {{ (isEditMode() ? 'COMMON.UPDATE_COURSE' : 'COMMON.SAVE_COURSE') | translate }}
       </button>
     </div>
   </form>

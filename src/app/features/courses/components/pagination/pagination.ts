@@ -1,7 +1,10 @@
 import { Component, computed, input, output } from '@angular/core';
 
+import { SharedModule } from '../../../../shared/shared-module';
+
 @Component({
   selector: 'app-pagination',
+  imports: [SharedModule],
   templateUrl: './pagination.html',
   styleUrl: './pagination.scss',
 })

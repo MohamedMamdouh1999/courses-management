@@ -17,7 +17,7 @@ aside {
     nav {
         row-gap: 12px;
         padding: 16px;
-        height: calc(100vh - (61px + 77px));
+        height: calc(100vh - 61px);
         a {
             display: flex;
             column-gap: 12px;
@@ -44,7 +44,7 @@ aside {
             }
         }
         @media screen and (max-width: 991px) {
-            height: calc(100vh - (56.88px + 77px));
+            height: calc(100vh - 56.88px);
         }
     }
     .user-info {
