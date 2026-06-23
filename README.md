@@ -2,6 +2,10 @@
 
 A responsive Angular application for managing courses in an educational platform.
 
+## Live Demo
+
+https://courses-management-jade.vercel.app/
+
 ## Technologies Used
 
 * Angular 22
