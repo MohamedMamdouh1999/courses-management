@@ -1,1 +1,69 @@
-<p>course-details works!</p>
+@if (course(); as course) {
+  <section class="details-page">
+    <div class="page-header">
+      <button class="back-btn" routerLink="/courses">← Back to Courses</button>
+
+      <div class="header-row">
+        <div>
+          <h1>Course Details</h1>
+          <p>Review full course information</p>
+        </div>
+
+        <button class="btn btn-primary" [routerLink]="['/courses/edit', course.id]">
+          Edit Course
+        </button>
+      </div>
+    </div>
+
+    <div class="details-card">
+      <div class="course-head">
+        <div>
+          <span class="course-id">#CRS-{{ course.id }}</span>
+          <h2>{{ course.courseName }}</h2>
+          <p>Created on {{ course.createdDate }}</p>
+        </div>
+
+        <span class="status-badge" [class]="getStatusClass(course.status)">
+          {{ course.status }}
+        </span>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-item">
+          <span>Instructor</span>
+          <strong>{{ course.instructorName }}</strong>
+        </div>
+
+        <div class="info-item">
+          <span>Category</span>
+          <strong>{{ course.category }}</strong>
+        </div>
+
+        <div class="info-item">
+          <span>Duration</span>
+          <strong>{{ course.duration }} hrs</strong>
+        </div>
+
+        <div class="info-item">
+          <span>Price</span>
+          <strong>{{ course.price | number }} EGP</strong>
+        </div>
+
+        <div class="info-item">
+          <span>Status</span>
+          <strong>{{ course.status }}</strong>
+        </div>
+
+        <div class="info-item">
+          <span>Created Date</span>
+          <strong>{{ course.createdDate }}</strong>
+        </div>
+      </div>
+
+      <div class="description">
+        <h3>Description</h3>
+        <p>{{ course.description || 'No description provided.' }}</p>
+      </div>
+    </div>
+  </section>
+}

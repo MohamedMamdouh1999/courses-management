@@ -1,1 +1,172 @@
-<p>courses-list works!</p>
+<section class="courses-page">
+  <div class="page-header">
+    <div>
+      <h1>Course Management</h1>
+      <p>Manage courses, instructors, pricing, and publication status</p>
+    </div>
+
+    <button class="btn btn-primary" routerLink="/courses/add">
+      + Add Course
+    </button>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span>Total Courses</span>
+      <strong>{{ totalCourses() }}</strong>
+    </div>
+
+    <div class="stat-card">
+      <span>Active Courses</span>
+      <strong>{{ activeCourses() }}</strong>
+    </div>
+
+    <div class="stat-card">
+      <span>Draft Courses</span>
+      <strong>{{ draftCourses() }}</strong>
+    </div>
+
+    <div class="stat-card">
+      <span>Archived Courses</span>
+      <strong>{{ archivedCourses() }}</strong>
+    </div>
+  </div>
+
+  <div class="table-card">
+    <div class="filters">
+      <input
+        type="text"
+        placeholder="Search by course name"
+        [ngModel]="searchTerm()"
+        (ngModelChange)="onSearchChange($event)"
+      />
+
+      <select
+        [ngModel]="selectedStatus()"
+        (ngModelChange)="onStatusChange($event)"
+      >
+        @for (status of statuses; track status) {
+          <option [value]="status">{{ status }}</option>
+        }
+      </select>
+
+      <select
+        [ngModel]="selectedCategory()"
+        (ngModelChange)="onCategoryChange($event)"
+      >
+        @for (category of categories; track category) {
+          <option [value]="category">{{ category }}</option>
+        }
+      </select>
+
+      <button class="btn btn-secondary" type="button" (click)="clearFilters()">
+        Clear Filters
+      </button>
+    </div>
+
+    @if (paginatedCourses().length) {
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Course Name</th>
+              <th>Instructor</th>
+              <th>Category</th>
+              <th>Duration</th>
+              <th>Price</th>
+              <th>Status</th>
+              <th>Created Date</th>
+              <th class="text-end">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            @for (course of paginatedCourses(); track course.id) {
+              <tr>
+                <td>
+                  <div class="course-name">
+                    <strong>{{ course.courseName }}</strong>
+                    <span>#CRS-{{ course.id }}</span>
+                  </div>
+                </td>
+
+                <td>
+                  <div class="instructor">
+                    <span class="avatar">{{ getInstructorInitials(course.instructorName) }}</span>
+                    {{ course.instructorName }}
+                  </div>
+                </td>
+
+                <td>
+                  <span class="category-badge">{{ course.category }}</span>
+                </td>
+
+                <td>{{ course.duration }} hrs</td>
+
+                <td>{{ course.price | number }} EGP</td>
+
+                <td>
+                  <span class="status-badge" [class]="getStatusClass(course.status)">
+                    {{ course.status }}
+                  </span>
+                </td>
+
+                <td>{{ course.createdDate }}</td>
+
+                <td>
+                  <div class="actions">
+                    <button [routerLink]="['/courses/details', course.id]">View</button>
+                    <button [routerLink]="['/courses/edit', course.id]">Edit</button>
+                    <button class="danger" (click)="deleteCourse(course)">Delete</button>
+                  </div>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pagination">
+        <span>
+          Showing page {{ currentPage() }} of {{ totalPages() }}
+        </span>
+
+        <div>
+          <button
+            type="button"
+            [disabled]="currentPage() === 1"
+            (click)="goToPage(currentPage() - 1)"
+          >
+            Previous
+          </button>
+
+          @for (page of [].constructor(totalPages()); track $index) {
+            <button
+              type="button"
+              [class.active]="currentPage() === $index + 1"
+              (click)="goToPage($index + 1)"
+            >
+              {{ $index + 1 }}
+            </button>
+          }
+
+          <button
+            type="button"
+            [disabled]="currentPage() === totalPages()"
+            (click)="goToPage(currentPage() + 1)"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    } @else {
+      <div class="empty-state">
+        <h3>No courses found</h3>
+        <p>Try adjusting your filters or create your first course.</p>
+        <button class="btn btn-primary" routerLink="/courses/add">
+          Add First Course
+        </button>
+      </div>
+    }
+  </div>
+</section>

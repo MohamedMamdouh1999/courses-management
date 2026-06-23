@@ -1,7 +1,6 @@
 import { CourseStatus } from "../enums/course-status";
 
-export interface ICourse {
-    id: number;
+export interface ICourseFormValue {
     courseName: string;
     instructorName: string;
     category: string;
@@ -9,5 +8,4 @@ export interface ICourse {
     price: number;
     status: CourseStatus;
     description?: string;
-    createdDate: string;
 }
