@@ -28,6 +28,7 @@ A responsive Angular application for managing courses in an educational platform
 * Sort courses by table columns
 * Delete confirmation modal
 * Loading skeleton
+* Route guard for invalid course details and edit pages
 
 ## Data Source
 
