@@ -180,9 +180,7 @@
                 <td>{{ course.price | number }} EGP</td>
 
                 <td>
-                  <span class="status-badge" [class]="getStatusClass(course.status)">
-                    {{ course.status }}
-                  </span>
+                  <app-status-badge [status]="course.status" />
                 </td>
 
                 <td>{{ course.createdDate }}</td>

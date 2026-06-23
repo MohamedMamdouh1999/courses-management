@@ -23,9 +23,7 @@
           <p>Created on {{ course.createdDate }}</p>
         </div>
 
-        <span class="status-badge" [class]="getStatusClass(course.status)">
-          {{ course.status }}
-        </span>
+        <app-status-badge [status]="course.status" />
       </div>
 
       <div class="info-grid">

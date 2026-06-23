@@ -5,15 +5,15 @@ import { toast } from 'ngx-sonner';
 
 import { SharedModule } from '../../../../shared/shared-module';
 
+import { StatusBadge } from '../../components/status-badge/status-badge';
+
 import { Courses } from '../../services/courses';
 
 import { ICourse } from '../../interfaces/course';
 
-import { CourseStatus } from '../../enums/course-status';
-
 @Component({
   selector: 'app-course-details',
-  imports: [SharedModule],
+  imports: [SharedModule, StatusBadge],
   templateUrl: './course-details.html',
   styleUrl: './course-details.scss',
 })
@@ -39,15 +39,5 @@ export class CourseDetails implements OnInit {
     }
 
     this.course.set(selectedCourse);
-  }
-
-  getStatusClass(status: CourseStatus): string {
-    const statusClasses: Record<CourseStatus, string> = {
-      [CourseStatus.Active]: 'status-active',
-      [CourseStatus.Draft]: 'status-draft',
-      [CourseStatus.Archived]: 'status-archived',
-    };
-
-    return statusClasses[status];
   }
 }

@@ -196,33 +196,14 @@ table {
   font-weight: 700;
 }
 
-.category-badge,
-.status-badge {
+.category-badge {
   display: inline-flex;
   border-radius: 999px;
   padding: 5px 10px;
   font-size: 12px;
   font-weight: 600;
-}
-
-.category-badge {
   background: #f1f5f9;
   color: #475569;
-}
-
-.status-active {
-  background: #dcfce7;
-  color: #16a34a;
-}
-
-.status-draft {
-  background: #fef3c7;
-  color: #d97706;
-}
-
-.status-archived {
-  background: #e2e8f0;
-  color: #64748b;
 }
 
 .actions {

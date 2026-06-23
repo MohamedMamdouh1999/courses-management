@@ -3,6 +3,8 @@ import { toast } from 'ngx-sonner';
 
 import { SharedModule } from '../../../../shared/shared-module';
 
+import { StatusBadge } from '../../components/status-badge/status-badge';
+
 import { Courses } from '../../services/courses';
 
 import { ICourse } from '../../interfaces/course';
@@ -23,7 +25,7 @@ type SortDirection = 'asc' | 'desc';
 
 @Component({
   selector: 'app-courses-list',
-  imports: [SharedModule],
+  imports: [SharedModule, StatusBadge],
   templateUrl: './courses-list.html',
   styleUrl: './courses-list.scss',
 })
@@ -146,16 +148,6 @@ export class CoursesList {
   goToPage(page: number): void {
     if (page < 1 || page > this.totalPages()) return;
     this.currentPage.set(page);
-  }
-
-  getStatusClass(status: CourseStatus): string {
-    const statusClasses: Record<CourseStatus, string> = {
-      [CourseStatus.Active]: 'status-active',
-      [CourseStatus.Draft]: 'status-draft',
-      [CourseStatus.Archived]: 'status-archived',
-    };
-
-    return statusClasses[status];
   }
 
   sortBy(column: SortColumn): void {

@@ -116,29 +116,6 @@
   }
 }
 
-.status-badge {
-  display: inline-flex;
-  border-radius: 999px;
-  padding: 6px 12px;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.status-active {
-  background: #dcfce7;
-  color: #16a34a;
-}
-
-.status-draft {
-  background: #fef3c7;
-  color: #d97706;
-}
-
-.status-archived {
-  background: #e2e8f0;
-  color: #64748b;
-}
-
 @media (max-width: 991px) {
   .info-grid {
     grid-template-columns: repeat(2, 1fr);
